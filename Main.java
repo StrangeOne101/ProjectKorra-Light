@@ -12,7 +12,7 @@ import com.projectkorra.projectkorra.configuration.ConfigManager;
 
 public class Main extends JavaPlugin{
 	
-	public static Element Light = new Element("Light");
+	public static Element Light;
 	
 	public void onEnable() {
 		FileConfiguration config = getConfig();
@@ -22,6 +22,8 @@ public class Main extends JavaPlugin{
 		ConfigManager.languageConfig.save();
 		saveConfig();
 		
+		Light = new Element("Light", null, this);
+		
 		ProjectKorra.plugin.getServer().getPluginManager().registerEvents(new LightListener(), ProjectKorra.plugin);
 		CoreAbility.registerPluginAbilities(this, "com.Swan.Korra.ProjectKorraLight");
 		
@@ -29,7 +31,4 @@ public class Main extends JavaPlugin{
 		Bukkit.broadcastMessage(Light.getPrefix());
 		
 	}
-	
-	
-	
 }
